@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Home</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://unpkg.com/mvp.css"> 
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <h1>✅ My Todoo </h1>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/?uri=history">History</a></li>
+                    <li><a href="/?uri=about">About</a></li>
+                </ul>
+            </nav>
+            
+            <form action="/?uri=add_task" method="post"> 
+                <h2>📝 Add a new task</h2>   
+                <input name="task" placeholder="Add a new task" style="width: 100%;"/>
+                <button type="submit">Add</button>
+            </form>
+            
+        </header>
+        <main>
+            <h2>My todo list</h2>
+            {% for task in tasks %}
+                <form action="/?uri=check_task" method="post">
+                    <label>{{ task.task }}</label>
+                    <input name="id" type="hidden" value="{{ task.id }}">
+                    <button type="submit">Done</button>
+                </form>    
+            {% endfor %}
+        </main>
+    </body>
+</html> 
